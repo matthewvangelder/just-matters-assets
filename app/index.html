@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Just Matters — Administratie</title>
+
+  <!-- Beginscherm-icoon (iOS). Dit is wat een Apps Script-app zelf niet kan zetten. -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="apple-touch-icon.png">
+
+  <!-- App-achtig gedrag + nette naam onder het icoon -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Just Matters">
+  <meta name="theme-color" content="#1A1714">
+
+  <!--
+    VUL HIER JE WEB-APP /exec-URL IN.
+    Te vinden in de Apps Script-editor: Deploy -> Beheer implementaties -> kopieer de web-app-URL
+    (eindigt op .../exec). Plak 'm hieronder tussen de aanhalingstekens.
+  -->
+  <script>
+    var APP_URL = "PLAK_HIER_JE_EXEC_URL";
+  </script>
+
+  <style>
+    html,body{height:100%;margin:0;}
+    body{
+      background:#1A1714; color:#FAF9F7;
+      font-family:-apple-system,Helvetica,Arial,sans-serif;
+      display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:18px; text-align:center;
+    }
+    img{width:84px;height:84px;border-radius:20px;}
+    .dot{color:#E05A3A;}
+    a{color:#E05A3A;}
+    .wordmark{font-weight:800;font-size:26px;letter-spacing:-1px;}
+    .muted{color:#8A8378;font-size:14px;}
+  </style>
+</head>
+<body>
+  <img src="apple-touch-icon.png" alt="Just Matters">
+  <div class="wordmark">Just Matters<span class="dot">.</span></div>
+  <div class="muted">Administratie wordt geopend…</div>
+  <noscript><a id="fallback">Open de administratie</a></noscript>
+
+  <script>
+    // Stuur direct door naar de echte Apps Script-webapp.
+    if (APP_URL && APP_URL.indexOf("PLAK_HIER") === -1) {
+      window.location.replace(APP_URL);
+    } else {
+      document.querySelector(".muted").textContent =
+        "Nog instellen: zet je /exec-URL in dit bestand (APP_URL).";
+    }
+  </script>
+</body>
+</html>
